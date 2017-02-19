@@ -74,3 +74,6 @@ Block crafting golden tools.
 
 ### block house
 Unsure how to implement.
+
+### 'inspiration'
+Unsure how to implement.
