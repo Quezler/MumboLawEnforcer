@@ -26,3 +26,6 @@ Make villagers invincible when a player are close by.
 
 ### hot hands
 Only allow flint and steel while the player is sneaking.
+
+### hotter hands
+Unsure how to implement.

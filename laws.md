@@ -5,7 +5,7 @@
 - aaaaahhhhhhh
 - wet redstone
 - killing off the nice guys
-- hot hands
+- hot hands / hotter hands / deforrested fire
 - the low light
 - the pillar leaver
 - jhonny big bucks
