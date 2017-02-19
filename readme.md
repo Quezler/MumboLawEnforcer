@@ -1,3 +1,6 @@
+# Mumbo Law Enforcer
+Based on the specifications of https://www.youtube.com/watch?v=Pinuymrh5b0
+
 ### dig straight down
 You cannot remove a stone block you are standing on in survival mode.
 
