@@ -1,5 +1,6 @@
 package net.queztech.mumbolawenforcer;
 
+import org.bukkit.Chunk;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -16,7 +17,9 @@ import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityToggleGlideEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -112,20 +115,33 @@ class Events implements Listener {
             if (!p.isSneaking()) {
                 event.setCancelled(true);
             }
-//
-//            ItemStack one = p.getInventory().getItemInOffHand();
-//            ItemStack two = p.getInventory().getItem(p.getInventory().getHeldItemSlot());
-//
-//            plugin.getServer().broadcastMessage(one.toString() + two.toString());
-//
-//            if (one != null && one.getType().equals(Material.FLINT_AND_STEEL) &&
-//                two != null && two.getType().equals(Material.FLINT_AND_STEEL)) {
-//
-//            } else {
-//                event.setCancelled(true);
-//            }
-//
-//            event.setCancelled(true); // somehow the off hand does not trigger this event, so we can simply cancel it alltogether.
+       }
+    }
+
+    @EventHandler
+    // commented code is to assist debugging
+    public void ThePillarLeaver(ChunkLoadEvent event) {
+//    public void ThePillarLeaver(EntityToggleGlideEvent event) {
+
+        Chunk c = event.getChunk();
+//        Chunk c = event.getEntity().getLocation().getChunk();
+
+        // https://bukkit.org/threads/get-all-blocks-in-a-chunk.311213/
+        for(int xx = 0; xx < 16; xx++) {
+            for(int zz = 0; zz < 16; zz++) {
+                Block block = c.getWorld().getHighestBlockAt(c.getBlock(xx, 0, zz).getLocation());
+
+                Integer airCount = 0;
+                for (Block around : Helper.blocksAround(block, 1)) {
+                    if (around.getType().equals(Material.AIR)) {
+                        airCount++;
+                    }
+                }
+
+                if (airCount == 26) {
+                    block.getLocation().add(0, -1, 0).getBlock().breakNaturally();
+                }
+            }
         }
     }
 
