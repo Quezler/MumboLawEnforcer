@@ -16,6 +16,7 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -203,6 +204,11 @@ class Events implements Listener {
         Player p = event.getPlayer();
         p.setHealth(p.getHealth() - 10);
         p.getWorld().dropItemNaturally(p.getLocation(), event.getBrokenItem());
+    }
+
+    @EventHandler
+    public void GoneFishing(PlayerFishEvent event) {
+        event.setCancelled(true);
     }
 
 }
