@@ -68,3 +68,6 @@ Only allow withers to be build under Y 50.
 
 ### diamonds on hoes
 Block crafting diamond hoes.
+
+### gold rush
+Block crafting golden tools.

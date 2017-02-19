@@ -28,6 +28,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -240,6 +241,14 @@ class Events implements Listener {
     @EventHandler
     public void DiamondOnHoes(CraftItemEvent event) {
         if (event.getRecipe().getResult().getType().equals(Material.DIAMOND_HOE)) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void GoldRish(CraftItemEvent event) {
+        Material[] blocked = {Material.GOLD_AXE, Material.GOLD_HOE, Material.GOLD_PICKAXE, Material.GOLD_SPADE, Material.GOLD_SWORD};
+        if (Arrays.asList(blocked).contains(event.getRecipe().getResult().getType())) {
             event.setCancelled(true);
         }
     }
