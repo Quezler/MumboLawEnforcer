@@ -38,3 +38,6 @@ Pillars slowly degrade over time, one block is removed (w/ drops) every time the
 
 ### jhonny big bucks
 Unsure how to implement.
+
+### excavation zone / personal space
+Most servers have factions or other land claiming plugins, irrelevant to implement.
