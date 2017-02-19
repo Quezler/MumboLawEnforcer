@@ -2,8 +2,11 @@ package net.queztech.mumbolawenforcer;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Helper {
 
@@ -19,5 +22,17 @@ public class Helper {
             }
         }
         return blocks;
+    }
+
+    // https://www.spigotmc.org/threads/nearby-players.66861/
+    public static Map<Player, Double> getPlayersInRange(int range, Location origin) {
+        Map<Player, Double> back = new HashMap<>();
+        origin.getWorld().getPlayers().forEach((p) -> {
+            double d = p.getLocation().distanceSquared(origin);
+            if (d <= range) {
+                back.put(p, d);
+            }
+        });
+        return back;
     }
 }

@@ -14,3 +14,6 @@ Dirt is not blocked, since sometimes building materials are scarse.
 ### a fine line
 Detect if the player in in nether and is walking on a 1 block narrow path.
 Recipe for disaster, yet not forbidden, so slowness I for safety sake.
+
+### aaaaahhhhhhh
+Give player a little bit of levitation of gravel falls nearby while in the nether.

@@ -9,10 +9,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.HashMap;
+import java.util.Map;
 
 class Events implements Listener {
 
@@ -56,6 +60,18 @@ class Events implements Listener {
             }
             if (airCount.equals(24)) {
                 event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 4,0));
+            }
+        }
+    }
+
+    @EventHandler
+    public void Aaaaahhhhhhh(BlockPhysicsEvent event) {
+        Block b = event.getBlock();
+        if (b.getWorld().getEnvironment().equals(World.Environment.NETHER)) {
+            if (b.getType().equals(Material.GRAVEL)) {
+                for (Player player : Helper.getPlayersInRange(5, b.getLocation()).keySet()) {
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 20 * 1, 10));
+                }
             }
         }
     }
