@@ -17,3 +17,6 @@ Recipe for disaster, yet not forbidden, so slowness I for safety sake.
 
 ### aaaaahhhhhhh
 Give player a little bit of levitation of gravel falls nearby while in the nether.
+
+### wet redstone
+Block water from flowing if something redstony is in a one block radius.

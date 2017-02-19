@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -75,4 +76,17 @@ class Events implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void WetRedstone(BlockFromToEvent event) {;
+        if (event.getBlock().getType().equals(Material.STATIONARY_WATER) ||
+            event.getBlock().getType().equals(Material.WATER)) {
+            for (Block block : Helper.blocksAround(event.getBlock(), 1)) {
+                if (block.getType().toString().contains("REDSTONE")) {
+                    event.setCancelled(true);
+                }
+            }
+        }
+    }
+
 }
