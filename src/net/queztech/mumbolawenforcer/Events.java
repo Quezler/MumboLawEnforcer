@@ -5,6 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -172,6 +173,25 @@ class Events implements Listener {
 
             ItemStack heldItem = (p.getInventory().getItem(p.getInventory().getHeldItemSlot()));
             if (heldItem != null && heldItem.getType().toString().contains("PICKAXE")) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void MassMurderer(EntityDamageEvent event) {
+        Entity here = event.getEntity();
+
+        if (here instanceof Animals) {
+
+            Integer nearbyFromSameBreed = 0;
+            for (Entity there : here.getNearbyEntities(16, 16, 16)) {
+                if (here.getType().equals(there.getType())) {
+                    nearbyFromSameBreed++;
+                }
+            }
+
+            if (nearbyFromSameBreed <= 1) {
                 event.setCancelled(true);
             }
         }

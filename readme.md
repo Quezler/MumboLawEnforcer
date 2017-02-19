@@ -53,3 +53,6 @@ Disable hurting entities with a pickaxe.
 
 ### moody poo
 Unsure how to implement.
+
+### mass murder
+Block hurting animals if there are only 2 of that species left nearby.
