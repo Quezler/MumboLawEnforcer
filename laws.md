@@ -1,4 +1,4 @@
-- dig straight down
+- dig straight down / head banger
 - floaters
 - filthy redstone
 - a fine line
