@@ -20,3 +20,6 @@ Give player a little bit of levitation of gravel falls nearby while in the nethe
 
 ### wet redstone
 Block water from flowing if something redstony is in a one block radius.
+
+### killing off the nice guys
+Make villagers invincible when a player are close by.
