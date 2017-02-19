@@ -71,3 +71,6 @@ Block crafting diamond hoes.
 
 ### gold rush
 Block crafting golden tools.
+
+### block house
+Unsure how to implement.
