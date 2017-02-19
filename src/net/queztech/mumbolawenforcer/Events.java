@@ -155,11 +155,23 @@ class Events implements Listener {
 
     @EventHandler
     public void EnderSmack(EntityTargetEvent event){
-        if (event.getTarget().getType().equals(EntityType.PLAYER)) {
+        if (event.getTarget() instanceof Player) {
             Player p = (Player) event.getTarget();
 
             ItemStack heldItem = (p.getInventory().getItem(p.getInventory().getHeldItemSlot()));
             if (heldItem != null && heldItem.getType().equals(Material.ENDER_PEARL)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void WrongSwing(EntityDamageByEntityEvent event) {
+        if (event.getDamager() instanceof Player) {
+            Player p = (Player) event.getDamager();
+
+            ItemStack heldItem = (p.getInventory().getItem(p.getInventory().getHeldItemSlot()));
+            if (heldItem != null && heldItem.getType().toString().contains("PICKAXE")) {
                 event.setCancelled(true);
             }
         }

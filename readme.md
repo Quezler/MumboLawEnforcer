@@ -47,3 +47,6 @@ Block breaking spawners in survival mode.
 
 ### ender smack
 Make pigman ignore player when hit with an enderpearl, while still holding another.
+
+### wrong swing
+Disable hurting entities with a pickaxe.
