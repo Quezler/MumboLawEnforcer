@@ -17,6 +17,7 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -233,6 +234,13 @@ class Events implements Listener {
             } else {
                 event.setCancelled(true);
             }
+        }
+    }
+
+    @EventHandler
+    public void DiamondOnHoes(CraftItemEvent event) {
+        if (event.getRecipe().getResult().getType().equals(Material.DIAMOND_HOE)) {
+            event.setCancelled(true);
         }
     }
 

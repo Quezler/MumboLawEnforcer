@@ -65,3 +65,6 @@ Disabled fishing.
 
 ### scary boss man
 Only allow withers to be build under Y 50.
+
+### diamonds on hoes
+Block crafting diamond hoes.
