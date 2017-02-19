@@ -5,6 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Animals;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -134,7 +135,7 @@ class Events implements Listener {
             return;
         }
 
-        System.out.print(c.toString());
+//        System.out.print(c.toString());
 
         new BukkitRunnable() {
             @Override
@@ -222,6 +223,17 @@ class Events implements Listener {
     @EventHandler
     public void GoneFishing(PlayerFishEvent event) {
         event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void ScaryBossMan(CreatureSpawnEvent event) {
+        if (event.getEntity().getType().equals(EntityType.WITHER)) {
+            if (event.getLocation().getY() <= 50) {
+
+            } else {
+                event.setCancelled(true);
+            }
+        }
     }
 
 }

@@ -62,3 +62,6 @@ Take half your health if you use a tool that will break.
 
 ### gone fishing
 Disabled fishing.
+
+### scary boss man
+Only allow withers to be build under Y 50.
