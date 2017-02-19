@@ -2,12 +2,17 @@ package net.queztech.mumbolawenforcer;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 class Events implements Listener {
 
@@ -35,6 +40,22 @@ class Events implements Listener {
                 if (block.getType().toString().contains("REDSTONE")) {
                     event.setCancelled(true);
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void AFineLine(PlayerMoveEvent event) {
+        Player p = event.getPlayer();
+        if (p.getWorld().getEnvironment().equals(World.Environment.NETHER)) {
+            Integer airCount = 0;
+            for (Block block : Helper.blocksAround(p.getLocation().add(0, -1, 0).getBlock(), 1)) {
+                if (block.getType().equals(Material.AIR)) {
+                    airCount++;
+                }
+            }
+            if (airCount.equals(24)) {
+                event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * 4,0));
             }
         }
     }
