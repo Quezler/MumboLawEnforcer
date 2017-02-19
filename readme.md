@@ -56,3 +56,6 @@ Unsure how to implement.
 
 ### mass murder
 Block hurting animals if there are only 2 of that species left nearby.
+
+### tool smasher
+Take half your health if you use a tool that will break.

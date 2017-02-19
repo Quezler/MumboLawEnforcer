@@ -16,6 +16,7 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.player.PlayerItemBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
@@ -195,6 +196,13 @@ class Events implements Listener {
                 event.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler
+    public void ToolSmasher(PlayerItemBreakEvent event) {
+        Player p = event.getPlayer();
+        p.setHealth(p.getHealth() - 10);
+        p.getWorld().dropItemNaturally(p.getLocation(), event.getBrokenItem());
     }
 
 }
