@@ -44,3 +44,6 @@ Most servers have factions or other land claiming plugins, irrelevant to impleme
 
 ### monster breaker
 Block breaking spawners in survival mode.
+
+### ender smack
+Make pigman ignore player when hit with an enderpearl, while still holding another.

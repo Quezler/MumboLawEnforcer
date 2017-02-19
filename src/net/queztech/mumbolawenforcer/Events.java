@@ -14,15 +14,14 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
-import org.bukkit.event.entity.EntityChangeBlockEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityToggleGlideEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -149,6 +148,18 @@ class Events implements Listener {
     public void MonsterBreaker(BlockBreakEvent event) {
         if (event.getBlock().getType().equals(Material.MOB_SPAWNER)) {
             if (event.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void EnderSmack(EntityTargetEvent event){
+        if (event.getTarget().getType().equals(EntityType.PLAYER)) {
+            Player p = (Player) event.getTarget();
+
+            ItemStack heldItem = (p.getInventory().getItem(p.getInventory().getHeldItemSlot()));
+            if (heldItem != null && heldItem.getType().equals(Material.ENDER_PEARL)) {
                 event.setCancelled(true);
             }
         }
