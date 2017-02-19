@@ -145,4 +145,13 @@ class Events implements Listener {
         }
     }
 
+    @EventHandler
+    public void MonsterBreaker(BlockBreakEvent event) {
+        if (event.getBlock().getType().equals(Material.MOB_SPAWNER)) {
+            if (event.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
 }

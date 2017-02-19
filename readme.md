@@ -41,3 +41,6 @@ Unsure how to implement.
 
 ### excavation zone / personal space
 Most servers have factions or other land claiming plugins, irrelevant to implement.
+
+### monster breaker
+Block breaking spawners in survival mode.
