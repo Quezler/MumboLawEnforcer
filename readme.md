@@ -23,3 +23,6 @@ Block water from flowing if something redstony is in a one block radius.
 
 ### killing off the nice guys
 Make villagers invincible when a player are close by.
+
+### hot hands
+Only allow flint and steel while the player is sneaking.

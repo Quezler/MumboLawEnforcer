@@ -11,11 +11,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -99,6 +101,31 @@ class Events implements Listener {
             if (Helper.getPlayersInRange(64, victim.getLocation()).size() > 0) {
                 event.setCancelled(true);
             }
+        }
+    }
+
+    @EventHandler
+    public void HotHands(BlockIgniteEvent event) {
+        if (event.getCause().equals(BlockIgniteEvent.IgniteCause.FLINT_AND_STEEL)) {
+            Player p = event.getPlayer();
+
+            if (!p.isSneaking()) {
+                event.setCancelled(true);
+            }
+//
+//            ItemStack one = p.getInventory().getItemInOffHand();
+//            ItemStack two = p.getInventory().getItem(p.getInventory().getHeldItemSlot());
+//
+//            plugin.getServer().broadcastMessage(one.toString() + two.toString());
+//
+//            if (one != null && one.getType().equals(Material.FLINT_AND_STEEL) &&
+//                two != null && two.getType().equals(Material.FLINT_AND_STEEL)) {
+//
+//            } else {
+//                event.setCancelled(true);
+//            }
+//
+//            event.setCancelled(true); // somehow the off hand does not trigger this event, so we can simply cancel it alltogether.
         }
     }
 
