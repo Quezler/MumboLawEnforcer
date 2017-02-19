@@ -129,22 +129,35 @@ class Events implements Listener {
 //        Chunk c = event.getEntity().getLocation().getChunk();
 
         // https://bukkit.org/threads/get-all-blocks-in-a-chunk.311213/
-        for(int xx = 0; xx < 16; xx++) {
-            for(int zz = 0; zz < 16; zz++) {
-                Block block = c.getWorld().getHighestBlockAt(c.getBlock(xx, 0, zz).getLocation());
 
-                Integer airCount = 0;
-                for (Block around : Helper.blocksAround(block, 1)) {
-                    if (around.getType().equals(Material.AIR)) {
-                        airCount++;
+        if (!event.getWorld().getEnvironment().equals(World.Environment.NORMAL)) {
+            return;
+        }
+
+        System.out.print(c.toString());
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for(int xx = 1; xx < 15; xx++) {
+                    for(int zz = 1; zz < 15; zz++) {
+                        Block block = c.getWorld().getHighestBlockAt(c.getBlock(xx, 0, zz).getLocation());
+
+                        Integer airCount = 0;
+                        for (Block around : Helper.blocksAround(block, 1)) {
+                            if (around.getType().equals(Material.AIR)) {
+                                airCount++;
+                            }
+                        }
+
+                        if (airCount == 26) {
+                            block.getLocation().add(0, -1, 0).getBlock().breakNaturally();
+                        }
                     }
                 }
-
-                if (airCount == 26) {
-                    block.getLocation().add(0, -1, 0).getBlock().breakNaturally();
-                }
             }
-        }
+        }.runTask(plugin);
+
     }
 
     @EventHandler
