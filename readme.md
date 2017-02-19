@@ -50,3 +50,6 @@ Make pigman ignore player when hit with an enderpearl, while still holding anoth
 
 ### wrong swing
 Disable hurting entities with a pickaxe.
+
+### moody poo
+Unsure how to implement.
